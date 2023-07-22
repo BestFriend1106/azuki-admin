@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+// import { Link as RouterLink } from 'react-router-dom';
 
 // material-ui
 import {
@@ -8,7 +8,7 @@ import {
   FormControlLabel,
   FormHelperText,
   Grid,
-  Link,
+  // Link,
   InputAdornment,
   InputLabel,
   OutlinedInput,
@@ -148,9 +148,9 @@ const AuthLogin = () => {
                     }
                     label={<Typography variant="h6">Keep me sign in</Typography>}
                   />
-                  <Link variant="h6" component={RouterLink} to="/forgot-password" color="text.primary">
+                  {/* <Link variant="h6" component={RouterLink} to="/forgot-password" color="text.primary">
                     Forgot Password?
-                  </Link>
+                  </Link> */}
                 </Stack>
               </Grid>
               {errors.submit && (
