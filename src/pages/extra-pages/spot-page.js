@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'utils/axios';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
@@ -30,6 +30,12 @@ const WalletListPage = () => {
     const utcDate = dateValue.toLocaleDateString('en-CA');
     const filtered = data.filter((item) => item.date === utcDate);
     setFilteredData(filtered);
+  };
+  const handleDeleteSpot = async (id) => {
+    const response = await axios.post('https://climb-server.onrender.com/api/spots/deleteById', {
+      id: id
+    });
+    toast(response.data.message, { hideProgressBar: false, autoClose: 2000, type: 'success' });
   };
 
   useEffect(() => {
@@ -90,6 +96,7 @@ const WalletListPage = () => {
               <div className="table-cell text-center">Address</div>
               <div className="table-cell text-center">WinStatus</div>
               <div className="table-cell text-center">Date</div>
+              <div className="table-cell text-center">Delete</div>
             </div>
           </div>
         )}
@@ -101,6 +108,16 @@ const WalletListPage = () => {
               <div className="table-cell text-center">{item.walletAddress}</div>
               <div className="table-cell text-center">{item.winStatus}</div>
               <div className="table-cell text-center">{item.createdAt}</div>
+              <div className="table-cell text-center p-2 mb-1">
+                <button
+                  className="rounded-lg bg-gray-500 p-1"
+                  onClick={() => {
+                    handleDeleteSpot(item.id);
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
             </div>
           ))}
         </div>
