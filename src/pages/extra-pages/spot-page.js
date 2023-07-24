@@ -9,6 +9,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 const WalletListPage = () => {
   const [data, setData] = useState([]);
   const [filtered, setFilteredData] = useState([]);
+  const [push, setPush] = useState(0);
 
   function handleChangeKeyword(event) {
     const keyword = event.target.value.toLowerCase();
@@ -36,6 +37,7 @@ const WalletListPage = () => {
       id: id
     });
     toast(response.data.message, { hideProgressBar: false, autoClose: 2000, type: 'success' });
+    setPush(push + 1);
   };
 
   useEffect(() => {
@@ -48,7 +50,7 @@ const WalletListPage = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [push]);
 
   return (
     <div className="w-full overflow-hidden">

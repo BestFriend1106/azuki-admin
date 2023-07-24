@@ -8,6 +8,7 @@ const WalletListPage = () => {
   const [data, setData] = useState([]);
   const [filtered, setFilteredData] = useState([]);
   const [newWalletAddress, setNewWalletAddress] = useState('');
+  const [push, setPush] = useState(0);
 
   function handleChangeKeyword(event) {
     const keyword = event.target.value.toLowerCase();
@@ -31,6 +32,7 @@ const WalletListPage = () => {
     });
     if (response.data === 'sucess') {
       toast('success', { hideProgressBar: false, autoClose: 2000, type: 'success' });
+      setPush(push + 1);
     } else if (response.data === 'Already exist') {
       toast(response.data, { hideProgressBar: false, autoClose: 2000, type: 'error' });
     }
@@ -46,7 +48,7 @@ const WalletListPage = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [push]);
 
   return (
     <div className="w-screen">
