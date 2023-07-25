@@ -98,6 +98,7 @@ const WalletListPage = () => {
               <div className="table-cell text-center">Address</div>
               <div className="table-cell text-center">WinStatus</div>
               <div className="table-cell text-center">Date</div>
+              <div className="table-cell text-center">Nickname</div>
               <div className="table-cell text-center">Delete</div>
             </div>
           </div>
@@ -110,6 +111,7 @@ const WalletListPage = () => {
               <div className="table-cell text-center">{item.walletAddress}</div>
               <div className="table-cell text-center">{item.winStatus}</div>
               <div className="table-cell text-center">{item.createdAt}</div>
+              <div className="table-cell text-center">{item.nickName}</div>
               <div className="table-cell text-center p-2 mb-1">
                 <button
                   className="rounded-lg bg-gray-500 p-1"
